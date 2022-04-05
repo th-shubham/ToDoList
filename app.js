@@ -17,6 +17,7 @@ app.use(express.static("public"));
 mongoose.connect(mongoConnectionURL, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
+	useFindAndModify: false,
 });
 
 const itemsSchema = {
@@ -30,14 +31,14 @@ const item1 = new Item({
 });
 
 const item2 = new Item({
-	name: "Hit the + button to add a new item.",
+	name: "Hit the + Button to Add a new Task.",
 });
 
 const item3 = new Item({
-	name: "<-- Hit this to delete an item.",
+	name: "Check the Checkbox to delete Task",
 });
 
-const defaultItems = [item1, item2, item3];
+const defaultItems = [item1, item3];
 
 const listSchema = {
 	name: String,
@@ -53,7 +54,7 @@ app.get("/", function (req, res) {
 				if (err) {
 					console.log(err);
 				} else {
-					console.log("Successfully savevd default items to DB.");
+					console.log("Successfully saved default items to DB.");
 				}
 			});
 			res.redirect("/");
