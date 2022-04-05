@@ -78,7 +78,7 @@ input[type="text"] {
 	font-weight: 200;
 	width: 313px;
 }
-input:checked {
+input:checked p {
 	visibility: hidden;
 }
 
